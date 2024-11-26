@@ -16,11 +16,21 @@ Então devo ser autenticado com sucesso
 E ser redirecionado para a página inicial
 
 Cenário: Login com credenciais inválidas
+
 Dado que sou um usuário do sistema
 Quando eu inserir um email inválido
-E inserir uma senha inválida
+E inserir uma senha inválida 
 E clicar no botão "Entrar"
 Então devo ver uma mensagem de erro apropriada
+E permanecer na página de login
+
+Cenário: Login com email válido e senha inválida
+
+Dado que sou um usuário do sistema
+Quando eu inserir um email válido cadastrado
+E inserir uma senha incorreta
+E clicar no botão "Entrar" 
+Então devo ver uma mensagem informando que a senha está incorreta
 E permanecer na página de login
 
 ### Feature: Recuperação de senha
@@ -42,6 +52,15 @@ Quando eu tentar fazer login com senha incorreta 5 vezes consecutivas
 Então minha conta deve ser temporariamente bloqueada
 E devo ver uma mensagem informando o bloqueio
 E não devo conseguir fazer novas tentativas de login
+
+Cenário: Recuperação de senha com link válido
+Dado que recebi um email com link de recuperação de senha
+Quando eu acessar o link de recuperação
+E inserir uma nova senha que atenda aos requisitos mínimos de segurança
+E confirmar a nova senha
+Então o sistema deve atualizar minha senha com sucesso
+E exibir mensagem de confirmação
+E redirecionar para a página de login
 
 Cenário: Validação de força da nova senha
 Dado que acessei o link de recuperação de senha
