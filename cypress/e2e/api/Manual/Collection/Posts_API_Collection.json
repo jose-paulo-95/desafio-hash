@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "random-uuid",
+		"name": "Posts API Collection",
+		"description": "Collection para testes de API de Posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Listar Posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code é 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Tempo de resposta é menor que 1s\", () => {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Response é um array\", () => {",
+									"    const response = pm.response.json();",
+									"    pm.expect(Array.isArray(response)).to.be.true;",
+									"    pm.expect(response.length).to.be.greaterThan(0);",
+									"});",
+									"",
+									"pm.test(\"Posts têm a estrutura correta\", () => {",
+									"    const response = pm.response.json();",
+									"    const firstPost = response[0];",
+									"    pm.expect(firstPost).to.have.all.keys(['userId', 'id', 'title', 'body']);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/posts",
+							"host": ["{{baseUrl}}"],
+							"path": ["posts"]
+						}
+					}
+				},
+				{
+					"name": "Obter Post por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code é 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Post tem ID correto\", () => {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.id).to.equal(1);",
+									"});",
+									"",
+									"pm.test(\"Post tem estrutura correta\", () => {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.have.all.keys(['userId', 'id', 'title', 'body']);",
+									"    pm.expect(response.title).to.be.a('string');",
+									"    pm.expect(response.body).to.be.a('string');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/posts/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["posts", "1"]
+						}
+					}
+				},
+				{
+					"name": "Criar Post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code é 201\", () => {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Post foi criado com dados corretos\", () => {",
+									"    const response = pm.response.json();",
+									"    const requestBody = JSON.parse(pm.request.body.raw);",
+									"",
+									"    pm.expect(response.title).to.equal(requestBody.title);",
+									"    pm.expect(response.body).to.equal(requestBody.body);",
+									"    pm.expect(response.userId).to.equal(requestBody.userId);",
+									"});",
+									"",
+									"pm.test(\"Response tem ID gerado\", () => {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.id).to.exist;",
+									"    pm.expect(response.id).to.be.a('number');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Novo Post\",\n    \"body\": \"Conteúdo do post\",\n    \"userId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/posts",
+							"host": ["{{baseUrl}}"],
+							"path": ["posts"]
+						}
+					}
+				},
+				{
+					"name": "Atualizar Post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code é 200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Post foi atualizado com dados corretos\", () => {",
+									"    const response = pm.response.json();",
+									"    const requestBody = JSON.parse(pm.request.body.raw);",
+									"",
+									"    pm.expect(response.title).to.equal(requestBody.title);",
+									"    pm.expect(response.body).to.equal(requestBody.body);",
+									"    pm.expect(response.userId).to.equal(requestBody.userId);",
+									"});",
+									"",
+									"pm.test(\"ID permanece o mesmo após atualização\", () => {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.id).to.equal(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Post Atualizado\",\n    \"body\": \"Novo conteúdo\",\n    \"userId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/posts/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["posts", "1"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://jsonplaceholder.typicode.com",
+			"type": "string"
+		}
+	]
+}
