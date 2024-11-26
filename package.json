@@ -1,0 +1,26 @@
+{
+  "name": "projeto-testes",
+  "version": "1.0.0",
+  "description": "Projeto de testes para e-commerce",
+  "scripts": {
+    "test:e2e": "cypress run --spec 'cypress/e2e/web/**/*.cy.js'",
+    "test:api": "cypress run --spec 'cypress/e2e/api/**/*.cy.js'",
+    "test:performance": "k6 run cypress/e2e/performance/load-test.js",
+    "cypress:open": "cypress open"
+  },
+  "dependencies": {
+    "k6": "^0.0.0"
+  },
+  "main": "cypress.config.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.16.0",
+    "cypress-plugin-api": "^2.11.2"
+  }
+}
