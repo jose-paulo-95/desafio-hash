@@ -13,7 +13,7 @@
 
 4. **Testes Manuais**
    - Postman
-   - Motivo: Ferramenta de API mais utilizada
+   - Motivo: Ferramenta de Teste de API mais utilizada
    - Validação UX/UI
    - Motivo: Validar comportamento de usuário final
    
@@ -28,7 +28,8 @@
 - Validações de UX
 
 ## Cronograma
-
-1. Semana 1: Setup e testes críticos
-2. Semana 2: Automação E2E
-3. Semana 3: Testes de API e performance 
+- **Curto prazo**:
+  - Testes funcionais automatizados no login.
+  - Testes manuais em APIs.
+- **Médio prazo**:
+  - Cobertura de performance e segurança.

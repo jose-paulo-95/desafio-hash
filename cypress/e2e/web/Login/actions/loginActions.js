@@ -1,44 +1,44 @@
 import LoginElements from '../elements/loginElements'
 class LoginActions {
-    preencherEmail(email) {
-        cy.get(LoginElements.inputEmail)
+    fillEmail(email) {
+        cy.get(LoginElements.inputUsername)
             .type(email)
     }
 
-    preencherSenha(senha) {
-        cy.get(LoginElements.inputSenha)
-            .type(senha)
+    fillPassword(password) {
+        cy.get(LoginElements.inputPassword)
+            .type(password)
     }
 
-    clicarBotaoLogin() {
-        cy.get(LoginElements.botaoSubmit)
+    clickLoginButton() {
+        cy.get(LoginElements.submitButton)
             .click()
     }
 
-    validarMensagemErro(mensagem) {
-        cy.get(LoginElements.mensagemFlash)
-            .should('contain', mensagem)
+    validateErrorMessage(message) {
+        cy.get(LoginElements.flashMessage)
+            .should('contain', message)
     }
 
-    validarLoginSucesso() {
-        cy.get(LoginElements.mensagemFlash)
+    validateLoginSuccess() {
+        cy.get(LoginElements.flashMessage)
             .should('contain', 'You logged into a secure area!')
         cy.get(LoginElements.subheader)
             .should('contain', 'Welcome to the Secure Area. When you are done click logout below.')
-        cy.get(LoginElements.botaoLogout)
+        cy.get(LoginElements.logoutButton)
             .should('contain', 'Logout')
     }
 
-    validarCampoObrigatorio() {
-        cy.get(LoginElements.mensagemErro)
+    validateRequiredField() {
+        cy.get(LoginElements.errorMessage)
             .should('exist')
     }
 
-    fazerLogin(email, senha) {
-        this.preencherEmail(email)
-        this.preencherSenha(senha)
-        this.clicarBotaoLogin()
+    login(email, password) {
+        this.fillEmail(email)
+        this.fillPassword(password)
+        this.clickLoginButton()
     }
 }
 
-export default new LoginActions() 
+export default new LoginActions()

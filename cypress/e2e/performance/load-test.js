@@ -12,15 +12,15 @@ const tempoResposta = new Trend("tempo_resposta");
 const erros = new Trend("erros");
 
 export const options = {
-  vus: 50, // 50 usuários virtuais simultâneos
-  duration: "30s", // duração de 30 segundos
+  vus: 50,  
+  duration: "30s", 
   thresholds: {
-    http_req_failed: ["rate < 0.01"], // 1% das reqs podem ocorrrer erro
+    http_req_failed: ["rate < 0.01"],
     http_req_duration: [
-      { threshold: "p(90) < 2000", abortOnFail: true }, // 90% das reqs devem responder em ate 2s
-      { threshold: "avg < 1500", abortOnFail: true }, // tempo médio de resposta deve ser menor que 1.5s
+      { threshold: "p(90) < 2000", abortOnFail: true },
+      { threshold: "avg < 1500", abortOnFail: true }
     ],
-    checks: ["rate > 0.99"], // Personalizado para garantir que pelo menos 99% das respostas são 200
+    checks: ["rate > 0.99"],
   },
 };
 

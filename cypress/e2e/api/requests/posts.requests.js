@@ -3,7 +3,7 @@ import "cypress-plugin-api";
 
 const POSTS = '/posts';
 
-function obterPosts() {
+function getPosts() {
   return cy.api({
     method: 'GET',
     url: `${request_URL}${POSTS}`,
@@ -15,7 +15,7 @@ function obterPosts() {
   });
 }
 
-function obterPostPorId(id) {
+function getPostById(id) {
   return cy.api({
     method: 'GET', 
     url: `${request_URL}${POSTS}/${id}`,
@@ -27,7 +27,7 @@ function obterPostPorId(id) {
   });
 }
 
-function criarPost(payload) {
+function createPost(payload) {
   return cy.api({
     method: 'POST',
     url: `${request_URL}${POSTS}`,
@@ -40,7 +40,7 @@ function criarPost(payload) {
   });
 }
 
-function atualizarPost(id, payload) {
+function updatePost(id, payload) {
   return cy.api({
     method: 'PUT',
     url: `${request_URL}${POSTS}/${id}`,
@@ -54,8 +54,8 @@ function atualizarPost(id, payload) {
 }
 
 module.exports = {
-  obterPosts,
-  obterPostPorId,
-  criarPost,
-  atualizarPost
+  getPosts,
+  getPostById,
+  createPost,
+  updatePost
 };

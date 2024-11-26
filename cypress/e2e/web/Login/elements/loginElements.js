@@ -1,17 +1,17 @@
 class LoginElements {
     // Inputs
-    inputEmail = '#username'
-    inputSenha = '#password'
+    inputUsername = '#username'
+    inputPassword = '#password'
     
-    // Botões
-    botaoSubmit = 'button[type="submit"]'
-    botaoLogout = 'a[href="/logout"]'
+    // Buttons
+    submitButton = 'button[type="submit"]'
+    logoutButton = 'a[href="/logout"]'
    
     
-    // Mensagens
-    mensagemFlash = '#flash'
-    mensagemErro = 'div.error'
+    // Messages
+    flashMessage = '#flash'
+    errorMessage = 'div.error'
     subheader = 'h4.subheader'
 }
 
-export default new LoginElements() 
+export default new LoginElements()
