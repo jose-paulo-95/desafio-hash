@@ -24,4 +24,4 @@ A API retorna erro 400 (Bad Request) quando se tenta validar se o post foi criad
 - Afeta funcionalidade core do sistema
 
 ## Evidências
-![Testes de API Posts -- deve criar um post - BUG (failed).png](cypress\screenshots\post.cy.js)  
+![API Posts Tests -- should create a new post - BUG (failed).png](cypress\screenshots\post.cy.js)  

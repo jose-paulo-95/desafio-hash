@@ -24,4 +24,4 @@ A API retorna status 200 (OK) na atualização, mas o post não é realmente atu
 - Afeta funcionalidade core do sistema
 
 ## Evidências
-![Testes de API Posts -- deve atualizar um post existente - BUG (failed).png](cypress\screenshots\post.cy.js)
+![API Posts Tests -- should update an existing post - BUG (failed).png](cypress\screenshots\post.cy.js)

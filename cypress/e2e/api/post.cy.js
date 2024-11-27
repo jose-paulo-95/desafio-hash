@@ -3,17 +3,17 @@ import {getPosts,
   createPost,
   updatePost } from './requests/posts.requests'
 
-describe('Testes de API Posts', () => {
+describe('API Posts Tests', () => {
   it('should validate the list of posts', () => {
     getPosts().then((response) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.be.an('array')
       expect(response.body.length).to.be.greaterThan(0)
-      const primeiroPost = response.body[0]
-      expect(primeiroPost).to.have.all.keys(['userId', 'id', 'title', 'body']
-      cy.log('Status da resposta:', response.status)
-      cy.log('Quantidade de posts:', response.body.length)
-      cy.log('Estrutura do primeiro post:', JSON.stringify(primeiroPost, null, 2))
+      const firstPost = response.body[0]
+      expect(firstPost).to.have.all.keys(['userId', 'id', 'title', 'body'])
+      cy.log('Response status:', response.status)
+      cy.log('Number of posts:', response.body.length)
+      cy.log('First post structure:', JSON.stringify(firstPost, null, 2))
     })
   })
 
@@ -26,8 +26,8 @@ describe('Testes de API Posts', () => {
 
   it('should create a new post - BUG', () => {
     const newPost = {
-      title: 'Novo Post',
-      body: 'Conteúdo do post', 
+      title: 'New Post',
+      body: 'Post content', 
       userId: 1
     }
 
@@ -45,8 +45,8 @@ describe('Testes de API Posts', () => {
   })
   it('should update an existing post - BUG', () => {
     const updatedPost = {
-      title: 'Post Atualizado', 
-      body: 'Novo conteúdo',
+      title: 'Updated Post', 
+      body: 'New content',
       userId: 1
     }
 
