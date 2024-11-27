@@ -104,6 +104,7 @@ npm run test:performance
 
 - Relatórios HTML dos testes de performance são gerados em `./report/test-api-load.html`
 - Screenshots de falhas são armazenados em `cypress/screenshots`
+- Vídeos de falhas são armazenados em `cypress/videos`
 - Evidências dos testes manuais de API:
   - `cypress/e2e/api/Manual/Evidences/GetAll/`
   - `cypress/e2e/api/Manual/Evidences/GetSpecific/`
