@@ -1,4 +1,4 @@
-# Projeto de Testes E-commerce
+# Projeto de Testes - Desafio Hash³
 
 Este projeto contém uma suíte completa de testes automatizados e manuais, incluindo testes funcionais, de API e performance.
 
