@@ -62,9 +62,41 @@ Este projeto contém uma suíte completa de testes automatizados e manuais, incl
     - Validação de dados
 
 - **Testes de Performance**
-  - Teste de carga com 50 usuários simultâneos
-  - Métricas de tempo de resposta
-  - Thresholds de performance
+  - **Configurações de Carga:**
+    - 50 usuários virtuais simultâneos
+    - Duração de 30 segundos
+    - Thresholds definidos para garantir qualidade
+
+  - **Endpoints Testados em Batch:**
+    - GET /posts
+    - GET /posts/1
+    - GET /posts/1/comments
+
+  - **Métricas Coletadas:**
+    - Quantidade total de chamadas
+    - Tempo de bloqueio das requisições
+    - Taxa de sucesso (requisições 200)
+    - Tempo de espera
+    - Tempo total de resposta
+    - Contagem de erros
+
+  - **Thresholds de Qualidade:**
+    - Taxa de falha menor que 1% (rate < 0.01)
+    - 90% das requisições abaixo de 2 segundos
+    - Tempo médio de resposta menor que 1.5 segundos
+    - Taxa de sucesso dos checks acima de 99%
+
+  - **Validações por Requisição:**
+    - Status code 200
+    - Monitoramento de erros
+    - Métricas de tempo de resposta
+    - Tempo de bloqueio
+
+  - **Reports Gerados:**
+    - Relatório HTML detalhado com todas as métricas
+    - Gráficos de performance
+    - Estatísticas de execução
+    - Localização: `./report/test-api-load.html`
 
 ## 🔧 Tecnologias Utilizadas
 
